@@ -1,0 +1,48 @@
+body {
+    background-color: black;
+}
+h1 {
+    color: blue;
+}
+header {
+    background-color: #181818;
+    padding: 20px;
+}
+nav {
+    background-color: #222;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    margin: 10px;
+}
+section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+article {
+    background-color: #222;
+    padding: 20px;
+    width: 200px;
+}
+button {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+}
+input {
+    padding: 10px;
+    width: 250px;
+}
+.chatbot {
+    background-color: #222;
+    padding: 20px;
+    margin: 30px;
+    border-radius: 10px;
+}
+header p {
+    color: white;
+}
