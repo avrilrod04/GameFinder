@@ -1,24 +1,65 @@
+/* ===== Estilos generales de la página ===== */
 body {
-    background-color: black;
+    background-color: #0f0f14;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
 }
-h1 {
-    color: blue;
-}
+
+/* ===== Cabecera ===== */
 header {
     background-color: #181818;
-    padding: 20px;
+    padding: 30px 20px;
+    text-align: center;
 }
+
+h1 {
+    color: #4da3ff;
+    margin: 0 0 10px 0;
+}
+
+header p {
+    color: white;
+    margin: 0;
+}
+
+/* ===== Menú de navegación ===== */
 nav {
     background-color: #222;
     padding: 15px;
+    text-align: center;
 }
 
 nav a {
     color: white;
     margin: 10px;
+    text-decoration: none;
 }
+
+nav a:hover {
+    color: #4da3ff;
+}
+
+/* ===== Contenido principal ===== */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+    width: 250px;
+    border: none;
+    border-radius: 6px;
+    margin-bottom: 25px;
+}
+
+/* ===== Tarjetas de juegos ===== */
 section {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
 }
@@ -27,22 +68,45 @@ article {
     background-color: #222;
     padding: 20px;
     width: 200px;
+    border-radius: 10px;
+    transition: transform 0.2s;
 }
+
+article:hover {
+    transform: translateY(-5px);
+}
+
+/* ===== Botones ===== */
 button {
-    background-color: blue;
+    background-color: #1e6fe0;
     color: white;
-    padding: 10px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
 }
-input {
-    padding: 10px;
-    width: 250px;
+
+button:hover {
+    background-color: #4da3ff;
 }
+
+/* ===== Chatbot ===== */
 .chatbot {
     background-color: #222;
     padding: 20px;
-    margin: 30px;
+    margin: 30px auto;
+    max-width: 400px;
     border-radius: 10px;
 }
-header p {
-    color: white;
+
+/* ===== Pie de página ===== */
+footer {
+    background-color: #181818;
+    padding: 15px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
 }
