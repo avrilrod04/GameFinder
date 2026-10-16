@@ -202,13 +202,9 @@ main {
     flex-wrap: wrap;
     gap: 8px;
     align-items: center;
-    margin: 8px 0 24px 0;
-    text-align: left;
-}
-
-#generos h2 {
-    flex-basis: 100%;
-    margin: 0 0 8px 0;
+    justify-content: center;
+    margin: 0 0 24px 0;
+    text-align: center;
 }
 
 #generos button {
