@@ -32,6 +32,25 @@ h3 {
     font-family: var(--fuente-titulos);
 }
 
+/* ===== Accesibilidad ===== */
+/* Etiquetas solo para lectores de pantalla. */
+.solo-lectores {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+/* Foco visible para quienes navegan con teclado. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 2px;
+}
+
 /* ===== Cabecera ===== */
 .cabecera {
     background-color: var(--fondo);
@@ -305,6 +324,7 @@ button {
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    min-height: 44px;
 }
 
 button:hover {

@@ -33,6 +33,7 @@
                 <h2 class="titulo-portada">Descubrí tu próximo juego favorito.</h2>
                 <p class="descripcion-portada">GameFinder es un catálogo de videojuegos para PC. Acá podés encontrar tu próximo juego de forma rápida y sencilla.</p>
                 <div class="fila-buscador">
+                    <label class="solo-lectores" for="buscador">Buscar un juego por su nombre</label>
                     <input type="text" id="buscador" placeholder="Buscar un juego...">
                     <button type="button" id="boton-buscar">Buscar</button>
                 </div>
@@ -140,7 +141,7 @@
                 </div>
                 <div class="panel-chat" id="panel-chat" hidden>
                     <p class="chat-titulo">Asistente gamer</p>
-                    <div class="chat-mensajes" id="chat-mensajes">
+                    <div class="chat-mensajes" id="chat-mensajes" aria-live="polite">
                         <p class="mensaje bot">¡Hola! Soy tu asistente gamer. Contame qué te gusta y te recomiendo un juego del catálogo.</p>
                     </div>
                     <div class="chat-rapidas">
@@ -149,6 +150,7 @@
                         <button type="button" data-respuesta="construir">Quiero construir</button>
                     </div>
                     <div class="chat-entrada">
+                        <label class="solo-lectores" for="chat-input">Escribí lo que te gusta jugar</label>
                         <input type="text" id="chat-input" placeholder="Escribí lo que te gusta...">
                         <button type="button" id="chat-enviar">Enviar</button>
                     </div>
