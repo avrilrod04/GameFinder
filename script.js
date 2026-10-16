@@ -53,6 +53,90 @@ document.addEventListener("keydown", function (evento) {
     }
 });
 
+// ===== Chat: envío de mensajes =====
+const chatMensajes = document.getElementById("chat-mensajes");
+const chatEnviar = document.getElementById("chat-enviar");
+const botonesRapidos = document.querySelectorAll(".chat-rapidas button");
+
+// Respuestas en texto simple (en el paso 7 llegan las tarjetas de juegos).
+const respuestasChat = {
+    accion: "Si querés acción, probá GTA V: explorá Los Santos y viví diferentes aventuras.",
+    equipo: "Para jugar en equipo te recomiendo Counter-Strike 2: partidas rápidas y tácticas.",
+    construir: "Si te gusta construir, Minecraft es para vos: explorá, construí y sobreviví."
+};
+
+const respuestaGenerica = "Mmm, no entendí bien. Probá con los botones de arriba o contame si preferís acción, equipo o construir.";
+
+// Elige la respuesta según lo que escribió la persona.
+function responderChat(texto) {
+    const t = normalizar(texto);
+
+    if (t.includes("accion") || t.includes("tiro")) {
+        return respuestasChat.accion;
+    }
+    if (t.includes("equipo") || t.includes("amigo") || t.includes("juntos")) {
+        return respuestasChat.equipo;
+    }
+    if (t.includes("constru") || t.includes("crear")) {
+        return respuestasChat.construir;
+    }
+    return respuestaGenerica;
+}
+
+// Agrega un mensaje y baja el scroll hasta el final.
+function agregarMensaje(texto, tipo) {
+    const p = document.createElement("p");
+    p.className = "mensaje " + tipo;
+    p.textContent = texto;
+    chatMensajes.appendChild(p);
+    chatMensajes.scrollTop = chatMensajes.scrollHeight;
+}
+
+// Muestra los puntitos de "escribiendo..." (después se saca).
+function mostrarEscribiendo() {
+    const p = document.createElement("p");
+    p.className = "mensaje bot escribiendo";
+    p.setAttribute("aria-hidden", "true");
+    p.innerHTML = "<span></span><span></span><span></span>";
+    chatMensajes.appendChild(p);
+    chatMensajes.scrollTop = chatMensajes.scrollHeight;
+    return p;
+}
+
+// Responde con 600ms de "escribiendo..." en el medio.
+function responderAlUsuario(textoUsuario) {
+    const escribiendo = mostrarEscribiendo();
+    setTimeout(function () {
+        escribiendo.remove();
+        agregarMensaje(responderChat(textoUsuario), "bot");
+    }, 600);
+}
+
+function enviarMensajeChat() {
+    const texto = chatInput.value.trim();
+    if (texto === "") {
+        return;
+    }
+    agregarMensaje(texto, "user");
+    chatInput.value = "";
+    responderAlUsuario(texto);
+}
+
+chatEnviar.addEventListener("click", enviarMensajeChat);
+
+chatInput.addEventListener("keydown", function (evento) {
+    if (evento.key === "Enter") {
+        enviarMensajeChat();
+    }
+});
+
+botonesRapidos.forEach(function (boton) {
+    boton.addEventListener("click", function () {
+        agregarMensaje(boton.textContent, "user");
+        responderAlUsuario(boton.textContent);
+    });
+});
+
 // ===== Normaliza texto: minúsculas y sin tildes =====
 function normalizar(texto) {
     return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
