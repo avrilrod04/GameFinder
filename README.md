@@ -21,7 +21,8 @@ No se usan librerías, frameworks ni herramientas externas. La única excepción
 - Un catálogo de 6 juegos (Minecraft, GTA V, FIFA, The Witcher 3, Counter-Strike 2 y Age of Empires II), cada tarjeta con su portada de color, género, descripción y botón "Ver juego".
 - Un mensaje cuando la búsqueda no tiene resultados.
 - Una sección de chatbot con botón flotante: abre una ventana de chat con bienvenida, respuestas rápidas y recomendaciones con tarjeta y link al catálogo.
-- Una sección de contacto con el mail como link y un pie de página.
+- Una sección de contacto con el mail como link y un formulario (nombre, email, motivo y mensaje) con validación en español y mensaje de éxito, sin servidor.
+- Un pie de página.
 - Un diseño oscuro y sobrio, responsive (celular, tablet y escritorio) y con accesibilidad básica (etiquetas, contraste y botones de 44px).
 
 ## 📁 Estructura del proyecto
@@ -44,6 +45,20 @@ GameFinder/
 No hace falta instalar nada.
 
 ## 📝 Registro de cambios
+
+### [2026-10-16] Formulario de contacto (rama formulario-contacto)
+
+- **Descripción**: Se agregó un formulario en la sección Contacto, con validación y mensaje de éxito, sin servidor.
+- **Archivos modificados**: `index.html`, `style.css`, `script.js`
+- **Motivo**: Permitir que la gente deje su nombre, email, motivo y mensaje desde la página.
+- **Detalles**:
+  - Sección en dos columnas (info + tarjeta) y una sola en celular
+  - Campos con etiqueta visible: nombre, email, motivo (Consulta, Sugerir un juego, Reportar un problema) y mensaje de 5 líneas
+  - Validación al enviar: nombre obligatorio, email con formato válido y mensaje de al menos 10 caracteres
+  - Errores cortos en español debajo de cada campo, con `aria-invalid`, `aria-describedby` y foco en el primer error
+  - Si está todo bien no recarga la página, vacía el formulario y muestra "¡Gracias, [nombre]! Recibimos tu mensaje."
+  - Aclaración en el código: es una simulación, sin servidor el mensaje no se envía a ningún lado
+- **Pruebas**: Revisión de sintaxis JS con `node --check` (aprobada). Revisión de HTML y CSS por lectura (aprobada, sin errores evidentes). Pruebas visuales y funcionales en navegador (pendientes - Avril las valida abriendo `index.html` y refrescando con Ctrl + F5).
 
 ### [2026-10-16] Chatbot flotante (rama chatbot-flotante)
 
