@@ -122,7 +122,6 @@
         </section>
         <p id="sin-resultados" hidden>No encontramos juegos con esa búsqueda.</p>
 
-        <h2> ¿No sabés qué jugar?</h2>
         <div id="generos">
             <h2>Géneros</h2>
             <button class="activo">Todos</button>
@@ -132,10 +131,30 @@
             <button>Rol</button>
             <button>Estrategia</button>
         </div>
-        <div class="chatbot">
-            <p>Preguntale a nuestro asistente</p>
-            <button onclick="chatbot()">Abrir chatbot</button>
-        </div>
+        <section class="seccion-chat">
+            <h2>¿No sabés qué jugar?</h2>
+            <div class="chat-grid">
+                <div class="chat-texto">
+                    <p>Preguntale a nuestro asistente</p>
+                    <button type="button" id="boton-chatbot" aria-expanded="false">Abrir chatbot</button>
+                </div>
+                <div class="panel-chat" id="panel-chat" hidden>
+                    <p class="chat-titulo">Asistente gamer</p>
+                    <div class="chat-mensajes" id="chat-mensajes">
+                        <p class="mensaje bot">¡Hola! Soy tu asistente gamer. Contame qué te gusta y te recomiendo un juego del catálogo.</p>
+                    </div>
+                    <div class="chat-rapidas">
+                        <button type="button" data-respuesta="accion">Quiero algo de acción</button>
+                        <button type="button" data-respuesta="equipo">Para jugar en equipo</button>
+                        <button type="button" data-respuesta="construir">Quiero construir</button>
+                    </div>
+                    <div class="chat-entrada">
+                        <input type="text" id="chat-input" placeholder="Escribí lo que te gusta...">
+                        <button type="button" id="chat-enviar">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
         <div id="contacto">
             <h2>Contacto</h2>
             <p>¿Tenés dudas o querés sugerirnos un juego?</p>
