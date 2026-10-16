@@ -331,95 +331,19 @@ button:hover {
     background-color: #4da3ff;
 }
 
-/* ===== Chatbot ===== */
+/* ===== Chatbot (sección) ===== */
 .seccion-chat {
     text-align: left;
     margin: 8px 0 24px 0;
 }
 
 .seccion-chat h2 {
-    margin: 0 0 12px 0;
+    margin: 0 0 8px 0;
 }
 
-.chat-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-    gap: 24px;
-    align-items: start;
-}
-
-.chat-texto p {
+.seccion-chat p {
     color: var(--texto-secundario);
     margin: 0 0 12px 0;
-}
-
-.panel-chat {
-    background-color: var(--superficie);
-    border: 1px solid var(--borde);
-    border-radius: 12px;
-    padding: 20px;
-}
-
-.chat-titulo {
-    font-family: var(--fuente-titulos);
-    margin: 0 0 12px 0;
-}
-
-.chat-mensajes {
-    display: grid;
-    gap: 10px;
-    margin-bottom: 12px;
-}
-
-.mensaje {
-    margin: 0;
-    padding: 10px 12px;
-    border-radius: 10px;
-}
-
-.mensaje.bot {
-    background-color: var(--superficie-chat);
-    color: var(--texto);
-}
-
-.mensaje.user {
-    background-color: var(--fondo-etiqueta);
-    border: 1px solid var(--borde-etiqueta);
-    color: var(--texto);
-}
-
-.chat-rapidas {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 12px;
-}
-
-.chat-rapidas button {
-    background-color: transparent;
-    border: 1px solid var(--borde-boton);
-    color: var(--texto);
-    border-radius: 999px;
-    padding: 8px 14px;
-    min-height: 44px;
-    cursor: pointer;
-}
-
-.chat-rapidas button:hover {
-    border-color: var(--acento);
-}
-
-.chat-entrada {
-    display: flex;
-    gap: 8px;
-}
-
-.chat-entrada input {
-    flex: 1;
-    background-color: var(--fondo);
-    border: 1px solid var(--borde);
-    color: var(--texto);
-    min-height: 44px;
 }
 
 /* ===== Contacto ===== */
