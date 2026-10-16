@@ -211,18 +211,10 @@ main {
     font-weight: 700;
 }
 
-input {
-    padding: 10px;
-    width: 250px;
-    border: none;
-    border-radius: 6px;
-    margin-bottom: 25px;
-}
-
 /* ===== Tarjetas de juegos ===== */
 section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 20px;
     width: 100%;
 }
@@ -331,7 +323,7 @@ button:hover {
 
 .chat-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 24px;
     align-items: start;
 }
@@ -446,140 +438,89 @@ footer p {
     margin: 0;
 }
 
-/* Buscador centrado */
+/* ===== Campos de texto base ===== */
 input {
-    display: block;
-    margin: 20px auto;
-    width: 300px;
-    max-width: 90%;
+    font: inherit;
+    padding: 10px 12px;
+    border-radius: 8px;
 }
 
 /* ===== Media queries - Diseño responsive ===== */
 
-/* Móvil: hasta 480px */
+/* Celular: hasta 480px (una columna, menú en varias líneas) */
 @media (max-width: 480px) {
-    header {
-        padding: 20px 15px;
+    .cabecera {
+        padding: 10px 12px;
     }
 
-    h1 {
-        font-size: 1.8rem;
+    .contenedor-cabecera {
+        gap: 8px;
     }
 
-    header p {
-        font-size: 0.95rem;
-    }
-
-    nav {
-        padding: 10px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 5px;
+    .logo {
+        font-size: 1.3rem;
     }
 
     nav a {
-        margin: 5px 8px;
+        padding: 8px 10px;
         font-size: 0.9rem;
     }
 
     main {
-        padding: 15px 10px;
+        padding: 15px 12px;
     }
 
-    input {
-        width: 90%;
-        max-width: 95%;
-        font-size: 0.9rem;
+    .portada {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 24px 0;
     }
 
-    section {
-        gap: 15px;
+    .titulo-portada {
+        font-size: 2rem;
+    }
+
+    .fila-buscador {
         flex-direction: column;
-        align-items: center;
     }
 
-    article {
-        width: 100%;
-        max-width: 320px;
-        padding: 15px;
+    #generos button {
+        font-size: 0.85rem;
+        padding: 8px 14px;
+    }
+
+    .datos-portada {
+        padding: 18px;
+    }
+
+    #contacto {
+        padding: 24px 18px;
     }
 
     h2 {
         font-size: 1.4rem;
     }
-
-    h3 {
-        font-size: 1.15rem;
-    }
-
-    p {
-        font-size: 0.9rem;
-    }
-
-    button {
-        font-size: 0.9rem;
-        padding: 9px 14px;
-    }
-
-    .chatbot {
-        max-width: 95%;
-        padding: 15px;
-        margin: 20px auto;
-    }
-
-    #generos {
-        padding: 0 5px;
-    }
-
-    #generos button {
-        margin: 5px;
-        font-size: 0.85rem;
-        padding: 8px 12px;
-    }
 }
 
-/* Tablet: 481px a 991px */
+/* Tablet: 481px a 991px (tarjetas en 2 columnas) */
 @media (min-width: 481px) and (max-width: 991px) {
-    nav {
-        padding: 12px;
-    }
-
-    nav a {
-        margin: 8px 12px;
-    }
-
     main {
-        padding: 18px 15px;
+        padding: 18px 16px;
     }
 
-    input {
-        width: 85%;
-        max-width: 400px;
+    .portada {
+        grid-template-columns: 1fr;
+        gap: 24px;
     }
 
     section {
-        gap: 15px;
-    }
-
-    article {
-        width: calc(50% - 10px);
-        max-width: 250px;
-        padding: 18px;
-    }
-
-    .chatbot {
-        max-width: 80%;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Laptop/Escritorio: 992px en adelante */
+/* Escritorio: 992px o más (contenido centrado) */
 @media (min-width: 992px) {
-    section {
-        justify-content: center;
-    }
-
-    article {
-        width: 200px;
+    main {
+        max-width: 1280px;
     }
 }
