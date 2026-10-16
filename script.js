@@ -58,29 +58,28 @@ const chatMensajes = document.getElementById("chat-mensajes");
 const chatEnviar = document.getElementById("chat-enviar");
 const botonesRapidos = document.querySelectorAll(".chat-rapidas button");
 
-// Respuestas en texto simple (en el paso 7 llegan las tarjetas de juegos).
-const respuestasChat = {
-    accion: "Si querés acción, probá GTA V: explorá Los Santos y viví diferentes aventuras.",
-    equipo: "Para jugar en equipo te recomiendo Counter-Strike 2: partidas rápidas y tácticas.",
-    construir: "Si te gusta construir, Minecraft es para vos: explorá, construí y sobreviví."
-};
+// Los 6 juegos del catálogo con sus palabras clave.
+const juegosChat = [
+    { nombre: "GTA V", genero: "Acción", frase: "Explorá Los Santos y viví diferentes aventuras.", color: "#D9A05B", claves: ["mundo abierto", "gta", "ciudad", "auto"] },
+    { nombre: "Counter-Strike 2", genero: "Acción", frase: "Competí en equipo en partidas rápidas y tácticas.", color: "#D98577", claves: ["accion", "disparo", "tiro", "competitivo", "equipo", "amigo", "juntos", "grupo"] },
+    { nombre: "Minecraft", genero: "Aventura", frase: "Explorá, construí y sobreviví.", color: "#6FAF7A", claves: ["constru", "crear", "bloque", "mina", "explorar", "aventura"] },
+    { nombre: "FIFA", genero: "Deportes", frase: "Disfrutá del fútbol y armá tu equipo.", color: "#6FAFD0", claves: ["futbol", "deporte", "pelota", "fifa"] },
+    { nombre: "The Witcher 3", genero: "Rol", frase: "Viví una aventura épica como cazador de monstruos.", color: "#A895D6", claves: ["rol", "historia", "epic", "monstruo", "fantasia", "brujo"] },
+    { nombre: "Age of Empires II", genero: "Estrategia", frase: "Construí tu imperio y conquistá a tus rivales.", color: "#CDBB78", claves: ["estrategia", "imperio", "medieval", "conquista", "pensar"] }
+];
 
-const respuestaGenerica = "Mmm, no entendí bien. Probá con los botones de arriba o contame si preferís acción, equipo o construir.";
-
-// Elige la respuesta según lo que escribió la persona.
-function responderChat(texto) {
+// Busca el primer juego que coincida con lo que escribió la persona.
+function buscarJuego(texto) {
     const t = normalizar(texto);
 
-    if (t.includes("accion") || t.includes("tiro")) {
-        return respuestasChat.accion;
+    for (const juego of juegosChat) {
+        for (const clave of juego.claves) {
+            if (t.includes(clave)) {
+                return juego;
+            }
+        }
     }
-    if (t.includes("equipo") || t.includes("amigo") || t.includes("juntos")) {
-        return respuestasChat.equipo;
-    }
-    if (t.includes("constru") || t.includes("crear")) {
-        return respuestasChat.construir;
-    }
-    return respuestaGenerica;
+    return null;
 }
 
 // Agrega un mensaje y baja el scroll hasta el final.
@@ -103,12 +102,46 @@ function mostrarEscribiendo() {
     return p;
 }
 
+// Arma la tarjeta de recomendación dentro de una burbuja del asistente.
+function agregarTarjeta(juego) {
+    const burbuja = document.createElement("div");
+    burbuja.className = "mensaje bot tarjeta-juego";
+
+    const franja = document.createElement("span");
+    franja.className = "tarjeta-franja";
+    franja.style.backgroundColor = juego.color;
+    franja.setAttribute("aria-hidden", "true");
+
+    const nombre = document.createElement("p");
+    nombre.className = "tarjeta-nombre";
+    nombre.textContent = juego.nombre;
+
+    const dato = document.createElement("p");
+    dato.className = "tarjeta-dato";
+    dato.textContent = juego.genero + ": " + juego.frase;
+
+    const link = document.createElement("a");
+    link.className = "tarjeta-link";
+    link.href = "#catalogo";
+    link.textContent = "Ver juego →";
+    link.addEventListener("click", cerrarChat);
+
+    burbuja.append(franja, nombre, dato, link);
+    chatMensajes.appendChild(burbuja);
+    chatMensajes.scrollTop = chatMensajes.scrollHeight;
+}
+
 // Responde con 600ms de "escribiendo..." en el medio.
 function responderAlUsuario(textoUsuario) {
     const escribiendo = mostrarEscribiendo();
     setTimeout(function () {
         escribiendo.remove();
-        agregarMensaje(responderChat(textoUsuario), "bot");
+        const juego = buscarJuego(textoUsuario);
+        if (juego) {
+            agregarTarjeta(juego);
+        } else {
+            agregarMensaje("Mmm, no entendí bien. Probá con los botones de arriba: acción, equipo o construir.", "bot");
+        }
     }, 600);
 }
 

@@ -581,6 +581,36 @@ button:hover {
     }
 }
 
+/* Tarjeta de recomendación dentro de la burbuja. */
+.mensaje.bot.tarjeta-juego {
+    padding: 0;
+    overflow: hidden;
+}
+
+.tarjeta-franja {
+    display: block;
+    height: 8px;
+}
+
+.tarjeta-nombre {
+    font-family: var(--fuente-titulos);
+    font-weight: 700;
+    margin: 12px 12px 4px;
+}
+
+.tarjeta-dato {
+    font-size: 0.85rem;
+    color: var(--texto-secundario);
+    margin: 0 12px 8px;
+}
+
+.tarjeta-link {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--acento);
+    margin: 0 12px 12px;
+}
+
 /* Respuestas rápidas. */
 .chat-rapidas {
     display: flex;
