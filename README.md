@@ -20,7 +20,7 @@ No se usan librerías, frameworks ni herramientas externas. La única excepción
 - Botones de género tipo pastilla (Todos, Aventura, Acción, Deportes, Rol, Estrategia) que filtran en conjunto con el buscador.
 - Un catálogo de 6 juegos (Minecraft, GTA V, FIFA, The Witcher 3, Counter-Strike 2 y Age of Empires II), cada tarjeta con su portada de color, género, descripción y botón "Ver juego".
 - Un mensaje cuando la búsqueda no tiene resultados.
-- Una sección de chatbot con panel de chat: mensaje de bienvenida, respuestas rápidas y cajita para escribir, con recomendaciones de juegos del catálogo.
+- Una sección de chatbot con botón flotante: abre una ventana de chat con bienvenida, respuestas rápidas y recomendaciones con tarjeta y link al catálogo.
 - Una sección de contacto con el mail como link y un pie de página.
 - Un diseño oscuro y sobrio, responsive (celular, tablet y escritorio) y con accesibilidad básica (etiquetas, contraste y botones de 44px).
 
@@ -44,6 +44,20 @@ GameFinder/
 No hace falta instalar nada.
 
 ## 📝 Registro de cambios
+
+### [2026-10-16] Chatbot flotante (rama chatbot-flotante)
+
+- **Descripción**: El chatbot pasó de panel fijo en la página a botón flotante con ventana de chat, con recomendaciones en tarjeta.
+- **Archivos modificados**: `index.html`, `style.css`, `script.js`
+- **Motivo**: Tener un asistente siempre a mano, como en las páginas de atención al cliente, sin ocupar lugar en la página.
+- **Detalles**:
+  - Botón flotante redondo abajo a la derecha (cambia de burbuja a X) con globito de invitación que se va solo a los 8 segundos
+  - Ventana de 380x560 con encabezado (avatar GF, "En línea"), mensajes, respuestas rápidas y barra de escritura
+  - Se abre con el botón flotante, el botón de la sección o la X, y se cierra también con Escape, con manejo del foco
+  - Recomendaciones de los 6 juegos por palabras clave (con tildes normalizadas) en tarjeta con franja de color y link a `#catalogo`
+  - Indicador "escribiendo..." y scroll automático
+  - En celular ocupa casi toda la pantalla; respeta movimiento reducido
+- **Pruebas**: Revisión de sintaxis JS con `node --check` (aprobada). Revisión de HTML y CSS por lectura (aprobada, sin errores evidentes). Pruebas visuales y funcionales en navegador (pendientes - Avril las valida abriendo `index.html` y refrescando con Ctrl + F5).
 
 ### [2026-10-16] Rediseño de GameFinder (rama rediseno-gamefinder)
 
