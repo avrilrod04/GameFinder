@@ -110,3 +110,11 @@ footer {
 footer p {
     margin: 0;
 }
+
+/* Buscador centrado */
+input {
+    display: block;
+    margin: 20px auto;
+    width: 300px;
+    max-width: 90%;
+}
