@@ -39,6 +39,22 @@ GameFinder/
 
 No hace falta instalar nada.
 
+## 📝 Registro de cambios
+
+### [2026-10-16] Diseño responsive para móvil, tablet y laptop
+
+- **Descripción**: Se añadió diseño responsive mediante media queries CSS para adaptar la página a distintos tamaños de pantalla.
+- **Archivos modificados**: `style.css`
+- **Motivo**: Solicitud de hacer la página responsive para mobile, tablets y laptops.
+- **Detalles**:
+  - Añadido `box-sizing: border-box` global
+  - Mejorada navegación con mejor comportamiento
+  - Ajustado ancho de contenedores (`main`, `section`) para adaptarse a viewport
+  - Móvil (≤480px): tarjetas en columna, padding reducido, nav flexible, tipografías ajustadas
+  - Tablet (481px–991px): tarjetas en 2 columnas, espaciados optimizados
+  - Laptop/Escritorio (≥992px): se mantiene estructura coherente
+- **Pruebas**: Revisión de sintaxis CSS (aprobada). Pruebas visuales en navegador (pendientes - no ejecutables en entorno actual). No se detectaron errores.
+
 ## 🚀 Posibles mejoras a futuro
 
 - Que el buscador filtre los juegos del catálogo.
