@@ -736,6 +736,17 @@ button:hover {
     border-radius: 8px;
 }
 
+#contacto .error {
+    color: #D98577;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+#contacto .exito {
+    color: var(--en-linea);
+    margin: 16px 0 0 0;
+}
+
 /* ===== Pie de página ===== */
 footer {
     background-color: var(--fondo);

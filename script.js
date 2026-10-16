@@ -244,3 +244,71 @@ if (totalGeneros) {
 }
 
 aplicarFiltros();
+
+// ===== Formulario de contacto =====
+// Simulación: como no hay servidor, el mensaje no se envía a ningún lado.
+const formularioContacto = document.getElementById("formulario-contacto");
+const campoNombre = document.getElementById("nombre");
+const campoEmail = document.getElementById("email");
+const campoMensaje = document.getElementById("mensaje");
+const mensajeExito = document.getElementById("mensaje-exito");
+
+// Muestra el error debajo del campo y lo marca como inválido.
+function mostrarError(campo, idError, texto) {
+    const error = document.getElementById(idError);
+    error.textContent = texto;
+    error.hidden = false;
+    campo.setAttribute("aria-invalid", "true");
+    campo.setAttribute("aria-describedby", idError);
+}
+
+// Limpia el error de un campo.
+function limpiarError(campo, idError) {
+    const error = document.getElementById(idError);
+    error.textContent = "";
+    error.hidden = true;
+    campo.removeAttribute("aria-invalid");
+    campo.removeAttribute("aria-describedby");
+}
+
+formularioContacto.addEventListener("submit", function (evento) {
+    evento.preventDefault(); // No recarga la página.
+
+    const nombre = campoNombre.value.trim();
+    const email = campoEmail.value.trim();
+    const mensaje = campoMensaje.value.trim();
+    let primerError = null;
+
+    limpiarError(campoNombre, "error-nombre");
+    limpiarError(campoEmail, "error-email");
+    limpiarError(campoMensaje, "error-mensaje");
+    mensajeExito.hidden = true;
+
+    if (nombre === "") {
+        mostrarError(campoNombre, "error-nombre", "Escribí tu nombre.");
+        primerError = primerError || campoNombre;
+    }
+
+    // Formato básico de email: algo@algo.algo
+    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!emailValido) {
+        mostrarError(campoEmail, "error-email", "Escribí un email válido.");
+        primerError = primerError || campoEmail;
+    }
+
+    if (mensaje.length < 10) {
+        mostrarError(campoMensaje, "error-mensaje", "El mensaje tiene que tener al menos 10 caracteres.");
+        primerError = primerError || campoMensaje;
+    }
+
+    // Si hay errores, lleva el foco al primero y no sigue.
+    if (primerError) {
+        primerError.focus();
+        return;
+    }
+
+    // Todo bien: vacía el formulario y muestra el saludo.
+    formularioContacto.reset();
+    mensajeExito.textContent = "¡Gracias, " + nombre + "! Recibimos tu mensaje.";
+    mensajeExito.hidden = false;
+});
