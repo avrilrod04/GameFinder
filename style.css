@@ -221,23 +221,82 @@ input {
 
 /* ===== Tarjetas de juegos ===== */
 section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     width: 100%;
 }
 
 article {
-    background-color: #222;
-    padding: 20px;
-    width: 200px;
-    border-radius: 10px;
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     transition: transform 0.2s;
 }
 
 article:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
+}
+
+.portada-juego {
+    background-color: var(--color-portada);
+    min-height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.inicial {
+    font-family: var(--fuente-titulos);
+    font-size: 3rem;
+    font-weight: 700;
+    color: #0B0C12;
+}
+
+.etiqueta-genero {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background-color: var(--fondo-etiqueta);
+    border: 1px solid var(--borde-etiqueta);
+    color: var(--texto);
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+.cuerpo-tarjeta {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.cuerpo-tarjeta h3 {
+    margin: 0;
+}
+
+.cuerpo-tarjeta p {
+    color: var(--texto-secundario);
+    margin: 0 0 8px 0;
+    flex: 1;
+}
+
+.cuerpo-tarjeta button {
+    background-color: transparent;
+    border: 1px solid var(--acento);
+    color: var(--texto);
+    min-height: 44px;
+}
+
+.cuerpo-tarjeta button:hover {
+    background-color: var(--acento);
+    color: #0B0C12;
 }
 
 /* ===== Botones ===== */
