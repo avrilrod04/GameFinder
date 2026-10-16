@@ -669,10 +669,11 @@ button:hover {
 
 /* ===== Contacto ===== */
 #contacto {
-    background-color: var(--superficie);
-    border: 1px solid var(--borde);
-    border-radius: 12px;
-    padding: 32px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+    padding: 16px 0;
     margin: 8px 0 24px 0;
 }
 
@@ -687,6 +688,52 @@ button:hover {
 
 #contacto a {
     color: var(--acento);
+}
+
+.contacto-tarjeta {
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.campo {
+    display: grid;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    min-height: 46px;
+    background-color: var(--fondo);
+    border: 1px solid var(--borde-boton);
+    color: var(--texto);
+    border-radius: 8px;
+    font: inherit;
+}
+
+.campo textarea {
+    resize: vertical;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    border-color: var(--acento);
+    outline: 2px solid var(--acento);
+    outline-offset: 1px;
+}
+
+#formulario-contacto button[type="submit"] {
+    width: 100%;
+    min-height: 48px;
+    background-color: var(--acento);
+    color: var(--fondo);
+    font-weight: 700;
+    border-radius: 8px;
 }
 
 /* ===== Pie de página ===== */
@@ -759,7 +806,13 @@ input {
     }
 
     #contacto {
-        padding: 24px 18px;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 8px 0;
+    }
+
+    .contacto-tarjeta {
+        padding: 20px;
     }
 
     h2 {
