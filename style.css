@@ -410,10 +410,34 @@ button:hover {
     min-height: 44px;
 }
 
+/* ===== Contacto ===== */
+#contacto {
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 32px 24px;
+    margin: 8px 0 24px 0;
+}
+
+#contacto h2 {
+    margin: 0 0 8px 0;
+}
+
+#contacto p {
+    color: var(--texto-secundario);
+    margin: 8px 0;
+}
+
+#contacto a {
+    color: var(--acento);
+}
+
 /* ===== Pie de página ===== */
 footer {
-    background-color: #181818;
-    padding: 15px;
+    background-color: var(--fondo);
+    border-top: 1px solid var(--borde);
+    color: var(--texto-secundario);
+    padding: 20px;
     margin-top: 30px;
     text-align: center;
 }
