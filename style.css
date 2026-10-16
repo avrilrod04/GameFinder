@@ -769,6 +769,27 @@ input {
     h2 {
         font-size: 1.4rem;
     }
+
+    /* Chat flotante a casi pantalla completa. */
+    .chat-globito {
+        display: none;
+    }
+
+    .chat-flotante {
+        bottom: 16px;
+        right: 16px;
+    }
+
+    .ventana-chat {
+        top: 12px;
+        right: 12px;
+        left: 12px;
+        bottom: auto;
+        width: auto;
+        height: calc(100vh - 24px);
+        height: calc(100dvh - 24px);
+        max-height: none;
+    }
 }
 
 /* Tablet: 481px a 991px (tarjetas en 2 columnas) */
