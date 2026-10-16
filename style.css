@@ -1,13 +1,35 @@
-/* ===== Estilos generales de la página ===== */
+/* ===== Variables de color y tipografías ===== */
+:root {
+    --fondo: #0B0C12;
+    --superficie: #14161F;
+    --superficie-chat: #1E2230;
+    --borde: #262A3B;
+    --borde-boton: #343950;
+    --texto: #F4F5FA;
+    --texto-secundario: #A9AEC4;
+    --acento: #6C9BF2;
+    --fondo-etiqueta: #141E36;
+    --borde-etiqueta: #2A3E6B;
+    --fuente-titulos: 'Chakra Petch', sans-serif;
+    --fuente-texto: 'DM Sans', sans-serif;
+}
+
+/* ===== Reset básico ===== */
 * {
     box-sizing: border-box;
 }
 
 body {
-    background-color: #0f0f14;
-    color: white;
-    font-family: Arial, sans-serif;
+    background-color: var(--fondo);
+    color: var(--texto);
+    font-family: var(--fuente-texto);
     margin: 0;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--fuente-titulos);
 }
 
 /* ===== Cabecera ===== */
