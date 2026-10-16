@@ -299,6 +299,12 @@ article:hover {
     color: #0B0C12;
 }
 
+/* ===== Mensaje sin resultados ===== */
+#sin-resultados {
+    color: var(--texto-secundario);
+    margin: 16px 0 8px 0;
+}
+
 /* ===== Botones ===== */
 button {
     background-color: #1e6fe0;
