@@ -346,6 +346,65 @@ button:hover {
     margin: 0 0 12px 0;
 }
 
+/* ===== Botón flotante del chat ===== */
+.chat-flotante {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 100;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--acento);
+    color: var(--fondo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    transition: transform 0.15s;
+}
+
+.chat-flotante:hover {
+    transform: translateY(-2px);
+}
+
+.chat-flotante svg {
+    width: 28px;
+    height: 28px;
+}
+
+/* Muestra la X solo cuando el chat está abierto. */
+.chat-flotante .icono-cerrar {
+    display: none;
+}
+
+.chat-flotante[aria-expanded="true"] .icono-cerrar {
+    display: block;
+}
+
+.chat-flotante[aria-expanded="true"] .icono-chat {
+    display: none;
+}
+
+/* ===== Globito de invitación ===== */
+.chat-globito {
+    position: fixed;
+    bottom: 38px;
+    right: 96px;
+    z-index: 100;
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin: 0;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
 /* ===== Contacto ===== */
 #contacto {
     background-color: var(--superficie);
