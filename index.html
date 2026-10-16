@@ -27,19 +27,25 @@
 
     <main>
  
-                <div id="inicio">
-            <h2>Bienvenido a GameFinder</h2>
-            <p>GameFinder es un catálogo de videojuegos para PC. Acá podés encontrar tu próximo juego de forma rápida y sencilla.</p>
-
-            <h3>¿Qué te ofrece la página?</h3>
-            <p> Un buscador para encontrar un juego por su nombre.</p>
-            <p> Un catálogo con juegos de distintos géneros.</p>
-            <p> Filtros por género para ver solo lo que te gusta.</p>
-            <p> Un asistente para cuando no sabés qué jugar.</p>
-        </div>
+        <section id="inicio" class="portada">
+            <div class="portada-texto">
+                <p class="etiqueta">CATÁLOGO DE JUEGOS PARA PC</p>
+                <h2 class="titulo-portada">Descubrí tu próximo juego favorito.</h2>
+                <p class="descripcion-portada">GameFinder es un catálogo de videojuegos para PC. Acá podés encontrar tu próximo juego de forma rápida y sencilla.</p>
+                <div class="fila-buscador">
+                    <input type="text" id="buscador" placeholder="Buscar un juego...">
+                    <button type="button" id="boton-buscar">Buscar</button>
+                </div>
+            </div>
+            <aside class="datos-portada">
+                <ul>
+                    <li><strong id="total-juegos">6</strong><span>juegos en el catálogo</span></li>
+                    <li><strong id="total-generos">5</strong><span>géneros para filtrar</span></li>
+                    <li><strong>1</strong><span>asistente gamer</span></li>
+                </ul>
+            </aside>
+        </section>
         <h2 id="catalogo">Catálogo de juegos</h2>
-
-        <input type="text" id="buscador" placeholder="Buscar un juego...">
 
         <section>
 
