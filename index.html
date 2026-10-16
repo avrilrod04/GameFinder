@@ -147,6 +147,40 @@
     <footer>
         <p>© 2026 GameFinder</p>
     </footer>
+
+    <!-- ===== Chatbot flotante ===== -->
+    <p class="chat-globito" id="chat-globito">¿Te ayudo a elegir un juego?</p>
+    <button type="button" class="chat-flotante" id="boton-chat-flotante" aria-label="Abrir chat" aria-expanded="false" aria-controls="ventana-chat">
+        <svg class="icono-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        <svg class="icono-cerrar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="ventana-chat" id="ventana-chat" role="dialog" aria-label="Chat con el asistente gamer" hidden>
+        <div class="chat-encabezado">
+            <span class="chat-avatar" aria-hidden="true">GF</span>
+            <div class="chat-quien">
+                <p class="chat-nombre">Asistente gamer</p>
+                <p class="chat-estado"><span class="chat-punto" aria-hidden="true"></span>En línea</p>
+            </div>
+            <button type="button" class="chat-cerrar" id="chat-cerrar" aria-label="Cerrar chat">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div class="chat-mensajes" id="chat-mensajes" aria-live="polite">
+            <p class="mensaje bot">¡Hola! Soy tu asistente gamer. Contame qué te gusta y te recomiendo un juego del catálogo.</p>
+        </div>
+        <div class="chat-rapidas">
+            <button type="button" data-clave="accion">Quiero algo de acción</button>
+            <button type="button" data-clave="equipo">Para jugar en equipo</button>
+            <button type="button" data-clave="construir">Quiero construir</button>
+        </div>
+        <div class="chat-barra">
+            <label class="solo-lectores" for="chat-input">Escribí lo que te gusta jugar</label>
+            <input type="text" id="chat-input" placeholder="Escribí lo que te gusta...">
+            <button type="button" id="chat-enviar" aria-label="Enviar mensaje">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>
+            </button>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 
