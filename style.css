@@ -814,3 +814,26 @@ input {
         max-width: 1280px;
     }
 }
+
+/* ===== Movimiento reducido ===== */
+@media (prefers-reduced-motion: reduce) {
+    .ventana-chat {
+        animation: none;
+    }
+
+    .chat-flotante {
+        transition: none;
+    }
+
+    .chat-flotante:hover {
+        transform: none;
+    }
+
+    .mensaje.escribiendo span {
+        animation: none;
+    }
+
+    article:hover {
+        transform: none;
+    }
+}
