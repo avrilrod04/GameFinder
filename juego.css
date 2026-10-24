@@ -1,0 +1,19 @@
+/* ===== Páginas de cada juego ===== */
+.pagina-juego { max-width: 760px; margin: 0 auto; text-align: left; padding: 16px 0 8px; }
+.portada-juego.grande { min-height: 260px; border-radius: 12px; }
+.portada-juego.grande .inicial { font-size: 5rem; }
+.titulo-juego { font-size: clamp(2rem, 5vw, 3rem); margin: 24px 0 8px; }
+.intro-juego { color: var(--texto-secundario); font-size: 1.1rem; margin: 0 0 24px; }
+.bloque { background-color: var(--superficie); border: 1px solid var(--borde); border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; }
+.bloque h2 { margin: 0 0 12px; font-size: 1.3rem; }
+.bloque ol, .bloque ul { margin: 0; padding-left: 20px; color: var(--texto-secundario); line-height: 1.6; }
+.bloque li { margin-bottom: 6px; }
+.bloque strong { color: var(--texto); }
+.bloque p { color: var(--texto-secundario); margin: 0 0 8px; }
+
+/* Links con forma de botón */
+.boton-ver, .boton-volver { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 16px; border-radius: 6px; text-decoration: none; }
+.boton-ver { border: 1px solid var(--acento); color: var(--texto); }
+.boton-ver:hover { background-color: var(--acento); color: #0B0C12; }
+.boton-volver { background-color: var(--acento); color: var(--fondo); font-weight: 700; margin-top: 8px; }
+.boton-volver:hover { background-color: #4da3ff; }

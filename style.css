@@ -897,3 +897,21 @@ input {
         transform: none;
     }
 }
+
+/* Imágenes de las portadas */
+.portada-juego {
+    position: relative;
+    overflow: hidden;
+}
+
+.portada-juego img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portada-juego:has(img) .inicial {
+    display: none;
+}
