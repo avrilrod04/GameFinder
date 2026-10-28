@@ -312,3 +312,29 @@ formularioContacto.addEventListener("submit", function (evento) {
     mensajeExito.textContent = "¡Gracias, " + nombre + "! Recibimos tu mensaje.";
     mensajeExito.hidden = false;
 });
+
+// Muestra en la página los juegos editados desde el admin
+document.addEventListener("DOMContentLoaded", function () {
+  const guardados = JSON.parse(localStorage.getItem("juegos"));
+  if (!guardados) return;
+
+  const nombresGenero = {
+    aventura: "Aventura",
+    accion: "Acción",
+    deportes: "Deportes",
+    rol: "Rol",
+    estrategia: "Estrategia"
+  };
+
+  const tarjetas = document.querySelectorAll("article[data-genero]");
+
+  guardados.forEach(function (juego, i) {
+    const tarjeta = tarjetas[i];
+    if (!tarjeta) return;
+
+    tarjeta.dataset.genero = juego.genero;
+    tarjeta.querySelector("h3").textContent = juego.nombre;
+    tarjeta.querySelector(".cuerpo-tarjeta p").textContent = juego.descripcion;
+    tarjeta.querySelector(".etiqueta-genero").textContent = nombresGenero[juego.genero];
+  });
+});

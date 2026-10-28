@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrar juegos - GameFinder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1e2430;
+      color: #e8ecf2;
+      margin: 0;
+      padding: 20px;
+    }
+    .contenedor { max-width: 600px; margin: 0 auto; }
+    h1, h2 { text-align: center; }
+    .juego {
+      background: #2a3140;
+      padding: 12px 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .juego small { color: #9aa5b8; }
+    button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      background: #5b8def;
+      color: white;
+      cursor: pointer;
+    }
+    #formulario-editar {
+      background: #2a3140;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 25px;
+      display: none;
+    }
+    label { display: block; margin-top: 12px; }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    #mensaje { text-align: center; margin-top: 12px; }
+    .arriba { text-align: right; margin-bottom: 10px; }
+    a { color: #9db8f5; }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <div class="arriba">
+      <a href="index.html">Ver página</a> &nbsp;
+      <button id="boton-salir">Cerrar sesión</button>
+    </div>
+
+    <h1>Administrar juegos</h1>
+    <div id="lista-juegos"></div>
+
+    <form id="formulario-editar">
+      <h2>Editar juego</h2>
+
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" required>
+
+      <label for="genero">Género</label>
+      <select id="genero">
+        <option value="aventura">Aventura</option>
+        <option value="accion">Acción</option>
+        <option value="deportes">Deportes</option>
+        <option value="rol">Rol</option>
+        <option value="estrategia">Estrategia</option>
+      </select>
+
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" rows="3" required></textarea>
+
+      <button type="submit" style="margin-top:15px; width:100%;">Guardar cambios</button>
+      <p id="mensaje"></p>
+    </form>
+  </div>
+
+  <script>
+    // Si no inició sesión, lo mandamos al login
+    if (sessionStorage.getItem("adminLogueado") !== "si") {
+      window.location.href = "login.html";
+    }
+
+    const juegosIniciales = [
+      { id: 1, nombre: "Minecraft", genero: "aventura", descripcion: "Construí y explorá un mundo infinito." },
+      { id: 2, nombre: "GTA V", genero: "accion", descripcion: "Mundo abierto lleno de acción y misiones." },
+      { id: 3, nombre: "FIFA", genero: "deportes", descripcion: "Jugá partidos de fútbol con tus equipos favoritos." },
+      { id: 4, nombre: "The Witcher 3", genero: "rol", descripcion: "Una gran aventura de fantasía y monstruos." },
+      { id: 5, nombre: "Counter-Strike 2", genero: "accion", descripcion: "Competí en equipo en partidas rápidas y tácticas." },
+      { id: 6, nombre: "Age of Empires II", genero: "estrategia", descripcion: "Construí tu imperio y vencé a tus rivales." }
+    ];
+
+    // Si ya hay juegos guardados en el navegador, los usa; si no, usa los iniciales
+    let juegos = JSON.parse(localStorage.getItem("juegos")) || juegosIniciales;
+    let juegoEditandoId = null;
+
+    const lista = document.getElementById("lista-juegos");
+    const formulario = document.getElementById("formulario-editar");
+    const mensaje = document.getElementById("mensaje");
+
+    function mostrarLista() {
+      lista.innerHTML = "";
+      juegos.forEach(function (juego) {
+        lista.innerHTML +=
+          '<div class="juego">' +
+            '<div><strong>' + juego.nombre + '</strong><br><small>' + juego.genero + '</small></div>' +
+            '<button onclick="editar(' + juego.id + ')">Editar</button>' +
+          '</div>';
+      });
+    }
+
+    function editar(id) {
+      const juego = juegos.find(function (j) { return j.id === id; });
+      juegoEditandoId = id;
+      document.getElementById("nombre").value = juego.nombre;
+      document.getElementById("genero").value = juego.genero;
+      document.getElementById("descripcion").value = juego.descripcion;
+      mensaje.textContent = "";
+      formulario.style.display = "block";
+      formulario.scrollIntoView();
+    }
+
+    formulario.addEventListener("submit", function (evento) {
+      evento.preventDefault();
+      const juego = juegos.find(function (j) { return j.id === juegoEditandoId; });
+      juego.nombre = document.getElementById("nombre").value;
+      juego.genero = document.getElementById("genero").value;
+      juego.descripcion = document.getElementById("descripcion").value;
+      localStorage.setItem("juegos", JSON.stringify(juegos));
+      mensaje.textContent = "Cambios guardados ✅";
+      mostrarLista();
+    });
+
+    document.getElementById("boton-salir").addEventListener("click", function () {
+      sessionStorage.removeItem("adminLogueado");
+      window.location.href = "login.html";
+    });
+
+    mostrarLista();
+  </script>
+</body>
+</html>
